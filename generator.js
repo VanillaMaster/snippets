@@ -49,3 +49,29 @@ class PseudoComponent{
 
 const instance = new PseudoComponent();
 instance.start();
+
+/** the simple one */
+
+class PseudoSimpleComponent{
+    constructor(){}
+    photos = ["p1","p2","p3"];
+    intervalRef = null;
+    get isPaused() {return this.intervalRef === null;}
+    currentPhoto;
+    generator = (function*(self){
+        let i = 0;
+        while (true) {
+            self.currentPhoto = self.photos[i++];
+            i = computeLoop(i, 0, arrayRef.length - 1);
+            yield;
+        }
+    })(this);
+    start(){
+        if (this.intervalRef !== null)
+        this.intervalRef = setInterval(this.generator.next, 2000);
+    }
+    stop(){
+        clearInterval(this.intervalRef);
+        this.intervalRef = null;
+    }
+}
