@@ -33,7 +33,7 @@ class PseudoComponent{
                 this.stop();this.start(this.#changeTimeout);
                 this.#changeTimeout = null;
             }
-            //some sort of rerender coll or something, idk?
+            //some sort of rerender call or something, idk?
         }, timeout);
     }
     nextPhoto(){
