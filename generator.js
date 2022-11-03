@@ -59,10 +59,8 @@ class PseudoSimpleComponent{
     get isPaused() {return this.intervalRef === null;}
     currentPhoto;
     generator = (function*(self){
-        let i = 0;
-        while (true) {
-            self.currentPhoto = self.photos[i++];
-            i = computeLoop(i, 0, arrayRef.length - 1);
+        while (true) for (const photo of self.photos) {
+            self.currentPhoto = photo;
             yield;
         }
     })(this);
