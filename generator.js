@@ -69,6 +69,7 @@ class PseudoSimpleComponent{
         this.intervalRef = setInterval(this.generator.next, 2000);
     }
     stop(){
+        if (this.intervalRef !== null)
         clearInterval(this.intervalRef);
         this.intervalRef = null;
     }
